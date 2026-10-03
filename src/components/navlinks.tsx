@@ -18,7 +18,7 @@ const NavLinks = async () => {
 
   //
   return (
-    <div className="flex justify-center gap-5 text-slate-700">
+    <div className="flex justify-center gap-5 text-slate-700 mt-3">
       {filterNavs.map((n: TNavs) => (
         <Link key={n.title} href={n.slug}>
           {n.title}

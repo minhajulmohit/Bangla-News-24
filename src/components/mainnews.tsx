@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 //
-interface INews {
+ export interface INews {
   id: string;
   title: string;
   description: string;

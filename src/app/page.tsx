@@ -1,5 +1,6 @@
 import MainNews from "../components/mainnews";
 import MostReadNews from "../components/mostreadnews";
+import OtherSectionNews from "../components/othersectionnews";
 
 //
 export default async function Home() {
@@ -13,13 +14,15 @@ export default async function Home() {
   const data2 = await res2.json();
   const mostRead = data2.data;
   //
-  console.log(mostRead);
+  const otherSections = sections.slice(1);
+  //
 
   return (
     <div className="container mx-auto grid  grid-cols-3 gap-10">
       {/* news section */}
       <div className="col-span-2">
         <MainNews news={mainNews}></MainNews>
+        <OtherSectionNews otherSections={otherSections}></OtherSectionNews>
       </div>
       {/* most read section */}
       <div className="col-span-1">

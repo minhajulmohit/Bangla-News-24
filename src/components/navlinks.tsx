@@ -1,4 +1,5 @@
-import Link from "next/link";
+
+import NavLinkItem from "./navlinkitem";
 
 type TNavs = {
   slug: string;
@@ -8,22 +9,24 @@ type TNavs = {
   scrapable: boolean;
 };
 
-//
 const NavLinks = async () => {
-  //
   const res = await fetch("https://news-api-v2.vercel.app/api/categories");
+
   const data = await res.json();
   const allNav = data.data;
+
   const filterNavs = allNav.filter((n: TNavs) => n.scrapable);
 
-  //
   return (
     <div className="flex justify-center gap-5 text-slate-700 mt-3">
-      <Link href={"/"}>হোম</Link>
+      <NavLinkItem href="/" title="হোম" />
+
       {filterNavs.map((n: TNavs) => (
-        <Link key={n.title} href={`/category/${n.slug}`}>
-          {n.title}
-        </Link>
+        <NavLinkItem
+          key={n.title}
+          href={`/category/${n.slug}`}
+          title={n.title}
+        />
       ))}
     </div>
   );

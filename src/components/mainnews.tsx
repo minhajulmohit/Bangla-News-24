@@ -1,6 +1,8 @@
 "use client";
-import Image from "next/image";
+ 
 import { useEffect, useState } from "react";
+import NewsCard from "./newscard";
+import Link from "next/link";
 //
 export interface INews {
   id: string;
@@ -53,46 +55,29 @@ const MainNews = ({ news }: { news: INews[] }) => {
   return (
     <div className="grid grid-cols-2 gap-5">
       {/* main news card */}
-      <div className="col-span-1 border border-slate-300 rounded-2xl ">
-        <Image
-          height={500}
-          width={510}
-          src={currentNews.imageUrl}
-          alt={currentNews.imageAlt}
-          className="w-full h-64 overflow-hidden rounded-t-2xl object-cover"
-        />
-        <div className="flex flex-col gap-4 p-4">
-          <p className="text-red-600">{currentNews.category}</p>
-          <h1 className="text-xl font-bold">{currentNews.title}</h1>
-          <p className="text-slate-500 text-[15px] line-clamp-3">
-            {currentNews.description}
-          </p>
-          <small className="text-slate-400">
-            {new Date(currentNews.firstPublished).toLocaleString("bn-BD", {
-              timeZone: "Asia/Dhaka",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-            })}
-          </small>
-        </div>
+      <div className="col-span-1">
+        <NewsCard a={currentNews}></NewsCard>
       </div>
       {/* main news titles */}
-      <div className="col-span-1 border border-slate-300 rounded-2xl p-4">
-        <div className="grid gap-4">
-          {currentNewsHeadlines.map((n) => (
-            <div
-              className="grid gap-2 border-b border-b-slate-300 pb-4 "
-              key={n.id}
-            >
-              <p className="text-red-700">{n.category}</p>
-              <h3 className="text-x font-bold">{n.title}</h3>
-            </div>
-          ))}
+    <div className="col-span-1 border border-slate-300 rounded-2xl p-4">
+  <div className="grid gap-4">
+    {currentNewsHeadlines.map((n) => (
+      <Link
+        href={`/news/${n.id}`}
+        key={n.id}
+        className="group"
+      >
+        <div className="grid gap-2 border-b border-b-slate-300 pb-4">
+          <p className="text-red-700">{n.category}</p>
+
+          <h3 className="text-xl font-bold">
+            {n.title}
+          </h3>
         </div>
-      </div>
+      </Link>
+    ))}
+  </div>
+</div>
     </div>
   );
 };

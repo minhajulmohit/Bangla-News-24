@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface IMostRead {
   id: string;
   title: string;
@@ -19,9 +21,15 @@ const MostReadNews = ({ mostRead }: { mostRead: IMostRead[] }) => {
   return (
     <div className="border border-slate-300 rounded-2xl p-5">
       <h3 className="font-bold text-xl mb-4">সর্বাধিক পঠিত</h3>
-      <ol className="list-decimal pl-5  marker:text-red-600 marker:font-semibold space-y-4">
+
+      <ol className="list-decimal pl-5 marker:text-red-600 marker:font-semibold space-y-4">
         {mostRead.map((mr) => (
-          <li key={mr.id}>{mr.title}</li>
+          <li
+            key={mr.id}
+            className="transition-colors duration-300 hover:text-red-600 cursor-pointer"
+          >
+            <Link href={`/news/${mr.id}`}>{mr.title}</Link>
+          </li>
         ))}
       </ol>
     </div>

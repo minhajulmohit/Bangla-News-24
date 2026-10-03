@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 //
- export interface INews {
+export interface INews {
   id: string;
   title: string;
   description: string;
@@ -64,7 +64,7 @@ const MainNews = ({ news }: { news: INews[] }) => {
         <div className="flex flex-col gap-4 p-4">
           <p className="text-red-600">{currentNews.category}</p>
           <h1 className="text-xl font-bold">{currentNews.title}</h1>
-          <p className="text-slate-500 text-[15px]">
+          <p className="text-slate-500 text-[15px] line-clamp-3">
             {currentNews.description}
           </p>
           <small className="text-slate-400">

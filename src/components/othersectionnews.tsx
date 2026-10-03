@@ -23,7 +23,12 @@ const OtherSectionNews = ({
             {" "}
             {os.title}
           </p>
-          <NewsCard os={os}></NewsCard>
+          <div className="grid grid-cols-3 gap-4 my-8">
+            {" "}
+            {os.articles.map((a) => (
+              <NewsCard key={a.id} a={a}></NewsCard>
+            ))}
+          </div>
         </div>
       ))}
     </div>

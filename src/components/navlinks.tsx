@@ -15,7 +15,7 @@ const NavLinks = async () => {
   const data = await res.json();
   const allNav = data.data;
   const filterNavs = allNav.filter((n: TNavs) => n.scrapable);
-  console.log(filterNavs);
+
   //
   return (
     <div className="flex justify-center gap-5 text-slate-700">

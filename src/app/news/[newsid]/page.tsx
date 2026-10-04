@@ -119,22 +119,22 @@ const NewsDetailsPage = async ({ params }: PageProps) => {
   );
   //
   return (
-    <main className="min-h-screen bg-white text-gray-900 ">
+    <main className="min-h-screen w-full bg-white text-gray-900">
       {/* Article Header */}
       <section className="border-b border-gray-200">
-        <div className="mx-auto max-w-5xl px-4 py-10 md:px-6 md:py-16">
+        <div className="mx-auto w-full max-w-5xl px-3 py-7 sm:px-4 sm:py-10 md:px-6 md:py-16">
           {/* Title */}
-          <h1 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+          <h1 className="max-w-4xl break-words text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-5xl">
             {article.title}
           </h1>
 
           {/* Description */}
-          <p className="mt-6 max-w-4xl text-lg leading-8 text-gray-600 md:text-xl">
+          <p className="mt-4 max-w-4xl text-base leading-7 text-gray-600 sm:mt-6 sm:text-lg sm:leading-8 md:text-xl">
             {article.description.blocks[0]?.model.blocks[0]?.model.text}
           </p>
 
           {/* Author + Date */}
-          <div className="mt-8 flex flex-col gap-4 border-t border-gray-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-6 flex flex-col gap-4 border-t border-gray-200 pt-5 sm:mt-8 sm:flex-row sm:items-center sm:justify-between sm:pt-6">
             <div>
               {article.byline.map((author, index) => (
                 <div key={index}>
@@ -154,7 +154,7 @@ const NewsDetailsPage = async ({ params }: PageProps) => {
       </section>
 
       {/* Main Image */}
-      <section className="mx-auto max-w-4xl px-4 py-8 md:px-6">
+      <section className="mx-auto w-full max-w-4xl px-3 py-6 sm:px-4 sm:py-8 md:px-6">
         <div className="overflow-hidden rounded-2xl">
           <Image
             src={article.imageUrl}
@@ -168,8 +168,8 @@ const NewsDetailsPage = async ({ params }: PageProps) => {
       </section>
 
       {/* Article Body */}
-      <section className="mx-auto max-w-3xl px-4 pb-16 md:px-6">
-        <article className="text-lg leading-9 text-gray-800">
+      <section className="mx-auto w-full max-w-3xl px-3 pb-12 sm:px-4 sm:pb-16 md:px-6">
+        <article className="text-base leading-7 text-gray-800 sm:text-lg sm:leading-9">
           {article.body.map((item, index) => {
             if (index === 0 && item.type === "image") {
               return null;
@@ -177,7 +177,7 @@ const NewsDetailsPage = async ({ params }: PageProps) => {
 
             if (item.type === "image") {
               return (
-                <figure key={index} className="my-10">
+                <figure key={index} className="my-7 sm:my-10">
                   <div className="overflow-hidden rounded-xl">
                     <Image
                       src={item.url}
@@ -207,7 +207,7 @@ const NewsDetailsPage = async ({ params }: PageProps) => {
               return (
                 <h2
                   key={index}
-                  className="mb-5 mt-10 text-2xl font-bold md:text-3xl"
+                  className="mb-4 mt-8 text-xl font-bold sm:mb-5 sm:mt-10 sm:text-2xl md:text-3xl"
                 >
                   {item.text}
                 </h2>
@@ -227,7 +227,7 @@ const NewsDetailsPage = async ({ params }: PageProps) => {
         </article>
 
         {/* Tags */}
-        <div className="mt-12 border-t border-gray-200 pt-8">
+        <div className="mt-8 border-t border-gray-200 pt-6 sm:mt-12 sm:pt-8">
           <div className="flex flex-wrap gap-2">
             {article.tags.map((tag, index) => (
               <span
@@ -241,7 +241,7 @@ const NewsDetailsPage = async ({ params }: PageProps) => {
         </div>
 
         {/* Source */}
-        <div className="mt-10 rounded-xl bg-gray-50 p-5">
+        <div className="mt-8 rounded-xl bg-gray-50 p-4 sm:mt-10 sm:p-5">
           <p className="text-sm text-gray-500">সূত্র</p>
 
           <p className="mt-1 font-semibold">{article.source}</p>

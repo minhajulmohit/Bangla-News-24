@@ -10,14 +10,13 @@ type Props = {
 
 const NavLinkItem = ({ href, title }: Props) => {
   const pathname = usePathname();
-
-  const isActive = pathname === href;
+  const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <Link
       href={href}
-      className={`transition-colors duration-300 ${
-        isActive ? "text-red-600 font-semibold" : "text-slate-700"
+      className={`shrink-0 rounded-md px-2 py-1 transition-colors duration-200 hover:bg-black/5 ${
+        isActive ? "font-semibold text-red-600" : "text-slate-700"
       }`}
     >
       {title}

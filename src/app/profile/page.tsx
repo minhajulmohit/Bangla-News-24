@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { authClient } from "../../lib/auth-client";
 import { useState } from "react";
 
 const ProfilePage = () => {
+  const router = useRouter();
   const { data: session } = authClient.useSession();
   const user = (
     session as unknown as {
@@ -19,6 +21,7 @@ const ProfilePage = () => {
 
   const handleSignout = async () => {
     await authClient.signOut({});
+    router.push("/signin");
   };
   const handleUpdateProfile = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

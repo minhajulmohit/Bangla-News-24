@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📰 Bangla News 24
 
-## Getting Started
+A modern, responsive Bengali news platform built with **Next.js** and **TypeScript**. The application consumes live news data from an external API and provides category-based browsing, latest headlines, most-read stories, detailed article pages, and protected user profiles with authentication.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🏠 **Homepage** with featured news, latest sections, and most-read articles
+- 🔴 **Latest News Marquee** for continuously scrolling headlines
+- 🗂️ **Category-based News** with dedicated category pages
+- 📰 **Article Details** with title, description, author, publication date, images, body content, tags, and source information
+- 🔐 **Authentication** with email/password, Google, and GitHub
+- 👤 **Protected Profile** page for authenticated users
+- 🚪 **Secure Logout** with redirect to the sign-in page
+- 🛡️ **Route Protection** using Next.js proxy and Better Auth
+- 💾 **MongoDB** database integration for authentication/session data
+- 📱 **Responsive UI** optimized for mobile, tablet, and desktop
+- ⏳ **Loading & 404 States** for a smoother user experience
+- ⚡ **Server-side data fetching** with Next.js App Router and API revalidation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+| Technology | Purpose |
+|---|---|
+| **Next.js** | Full-stack React framework and App Router |
+| **TypeScript** | Type-safe development |
+| **Tailwind CSS** | Responsive and utility-first styling |
+| **DaisyUI** | UI components and styling utilities |
+| **Better Auth** | Authentication and session management |
+| **MongoDB** | Authentication/session database |
+| **React** | Component-based UI |
+| **React Hot Toast** | User feedback and notifications |
+| **News API** | Live news and category data |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔐 Authentication
 
-## Learn More
+Better Auth is integrated with MongoDB and supports:
 
-To learn more about Next.js, take a look at the following resources:
+- Email & password authentication
+- Google OAuth
+- GitHub OAuth
+- Session-based authentication
+- Protected profile and news routes
+- User sign-out and redirect
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌐 Data Source
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The application uses the **News API v2** for live:
 
-## Deploy on Vercel
+- News articles
+- Categories
+- Latest headlines
+- Most-read news
+- Article details
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📱 Responsive Design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The interface is designed to provide a consistent experience across:
+
+- 📱 Mobile
+- 📲 Tablet
+- 💻 Laptop
+- 🖥️ Desktop
+
+
+## 🏗️ Project Highlights
+
+This project demonstrates practical experience with **Next.js App Router, Server Components, dynamic routes, external API integration, TypeScript interfaces, responsive Tailwind CSS, authentication, OAuth, MongoDB, protected routes, and production-oriented error/loading handling**.
+
+## 📌 Future Improvements
+
+- Search functionality
+- Bookmark/save articles
+- User-specific reading history
+- Dark mode
+- Pagination or infinite scrolling
+- Admin dashboard for content management
+
+## 👨‍💻 Author
+
+**MD Minhajul Islam Mohit**
+
+- GitHub: [minhajulmohit](https://github.com/minhajulmohit)
+- LinkedIn: [MD Minhajul Islam Mohit](https://www.linkedin.com/in/md-minhajul-islam-mohit-856261439/)
+
+---
+
+⭐ If you find this project useful, consider giving it a star!

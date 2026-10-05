@@ -5,8 +5,8 @@ import { INews } from "./mainnews";
 const NewsCard = ({ a }: { a: INews }) => {
   return (
     <Link href={`/news/${a.id}`} className="group block h-full min-w-0">
-      <article className="h-full overflow-hidden rounded-2xl border border-slate-300 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-red-200 hover:shadow-lg">
-        <div className="relative aspect-[4/3] w-full overflow-hidden">
+      <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-300 transition-all duration-300 hover:-translate-y-1 hover:border-red-200 hover:shadow-lg">
+        <div className="relative aspect-4/3 w-full overflow-hidden">
           <Image
             fill
             sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
@@ -16,7 +16,7 @@ const NewsCard = ({ a }: { a: INews }) => {
           />
         </div>
 
-        <div className="flex h-full flex-col gap-3 p-3 sm:gap-4 sm:p-4">
+        <div className="flex flex-1 flex-col gap-3 p-3 sm:gap-4 sm:p-4">
           <p className="text-sm text-red-600 sm:text-base">{a.category}</p>
           <h2 className="text-base font-bold leading-snug transition-colors duration-300 group-hover:text-red-600 sm:text-lg">
             {a.title}
@@ -25,7 +25,7 @@ const NewsCard = ({ a }: { a: INews }) => {
             {a.description}
           </p>
           <small className="mt-auto text-xs leading-5 text-slate-400 sm:text-sm">
-            {new Date(a.firstPublished).toLocaleString("bn-BD", {
+            {new Date(a.lastPublished).toLocaleString("bn-BD", {
               timeZone: "Asia/Dhaka",
               year: "numeric",
               month: "long",

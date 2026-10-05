@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { THeadline } from "../../../components/marquee";
 import NewsCard from "../../../components/newscard";
 
@@ -12,6 +13,9 @@ const SingleCategoryNews = async ({ params }: SingleCategoryPageProps) => {
   );
   const data = await res.json();
   const categoryNews = data.data;
+  if (!categoryNews) {
+    notFound();
+  }
 
   return (
     <main className="container mx-auto w-full max-w-screen-2xl px-3 sm:px-4 lg:px-6">

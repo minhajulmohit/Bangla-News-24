@@ -22,7 +22,7 @@ const OtherSectionNews = ({
           <h2 className="border-b-2 border-b-red-700 pb-2 text-base font-semibold sm:text-lg">
             {os.title}
           </h2>
-          <div className="my-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:my-6">
+          <div className="my-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:my-6">
             {os.articles.map((a) => (
               <NewsCard key={a.id} a={a} />
             ))}

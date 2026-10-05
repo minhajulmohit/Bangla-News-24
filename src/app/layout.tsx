@@ -1,7 +1,11 @@
+import dns from "node:dns/promises";
+dns.setServers(["1.1.1.1"]);
 import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 import NavBar from "../components/navbar";
 import Marquee from "../components/marquee";
+import { Toaster } from "react-hot-toast";
+import Footer from "../components/footer";
 
 const NotoSerifBengali = Noto_Serif_Bengali({
   variable: "--font-geist-sans",
@@ -17,12 +21,15 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      data-theme="light"
       className={`${NotoSerifBengali.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Toaster></Toaster>
         <NavBar />
         <Marquee />
         {children}
+        <Footer></Footer>
       </body>
     </html>
   );

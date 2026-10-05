@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 interface DescriptionFragment {
   type: string;
   model: {
@@ -104,6 +105,9 @@ const NewsDetailsPage = async ({ params }: PageProps) => {
   }
   const data: IndividualNewsResponse = await res.json();
   const article: ArticleData = await data.data;
+  if (!article) {
+    notFound();
+  }
 
   const publishedDate = new Date(article.firstPublished).toLocaleString(
     "bn-BD",
@@ -124,7 +128,7 @@ const NewsDetailsPage = async ({ params }: PageProps) => {
       <section className="border-b border-gray-200">
         <div className="mx-auto w-full max-w-5xl px-3 py-7 sm:px-4 sm:py-10 md:px-6 md:py-16">
           {/* Title */}
-          <h1 className="max-w-4xl break-words text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-5xl">
+          <h1 className="max-w-4xl wrap-break-word text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-5xl">
             {article.title}
           </h1>
 

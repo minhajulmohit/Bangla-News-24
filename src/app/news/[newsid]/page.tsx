@@ -94,11 +94,7 @@ const NewsDetailsPage = async ({ params }: PageProps) => {
   const { newsid } = await params;
   const res = await fetch(
     `https://news-api-v2.vercel.app/api/article/${newsid}`,
-    {
-      next: {
-        revalidate: 300,
-      },
-    },
+    { cache: "no-store" },
   );
   if (!res.ok) {
     throw new Error("Article fetch failed");

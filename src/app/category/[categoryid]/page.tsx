@@ -10,6 +10,7 @@ const SingleCategoryNews = async ({ params }: SingleCategoryPageProps) => {
   const { categoryid: categoryId } = await params;
   const res = await fetch(
     `https://news-api-v2.vercel.app/api/category/${categoryId}`,
+    { cache: "no-store" },
   );
   const data = await res.json();
   const categoryNews = data.data;

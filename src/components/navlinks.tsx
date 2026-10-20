@@ -9,7 +9,9 @@ type TNavs = {
 };
 
 const NavLinks = async () => {
-  const res = await fetch("https://news-api-v2.vercel.app/api/categories");
+  const res = await fetch("https://news-api-v2.vercel.app/api/categories", {
+    cache: "no-store",
+  });
   const data = await res.json();
   const allNav = data.data;
   const filterNavs = allNav.filter((n: TNavs) => n.scrapable);

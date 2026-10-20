@@ -3,12 +3,17 @@ import MostReadNews from "../components/mostreadnews";
 import OtherSectionNews from "../components/othersectionnews";
 
 export default async function Home() {
-  const res = await fetch("https://news-api-v2.vercel.app/api/news/sections");
+  const res = await fetch("https://news-api-v2.vercel.app/api/news/sections", {
+    cache: "no-store",
+  });
   const data = await res.json();
   const sections = data.data;
   const mainNews = sections[0].articles;
 
-  const res2 = await fetch("https://news-api-v2.vercel.app/api/news/most-read");
+  const res2 = await fetch(
+    "https://news-api-v2.vercel.app/api/news/most-read",
+    { cache: "no-store" },
+  );
   const data2 = await res2.json();
   const mostRead = data2.data;
 

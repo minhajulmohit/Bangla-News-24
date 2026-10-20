@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { fetchNewsApi } from "../../../lib/news-api";
 interface DescriptionFragment {
   type: string;
   model: {
@@ -92,13 +93,19 @@ interface PageProps {
 const NewsDetailsPage = async ({ params }: PageProps) => {
   //
   const { newsid } = await params;
-  const res = await fetch(
-    `https://news-api-v2.vercel.app/api/article/${newsid}`,
-    { cache: "no-store" },
-  );
-  if (!res.ok) {
-    throw new Error("Article fetch failed");
+  const res = await fetchNewsApi(`/api/article/${newsid}`);
+
+  if (!res) {
+    return (
+      <main className="container mx-auto w-full max-w-screen-2xl px-3 py-16 text-center sm:px-4 lg:px-6">
+        <h1 className="text-xl font-bold text-red-700">খবর লোড করা যায়নি</h1>
+        <p className="mt-2 text-slate-600">
+          সাময়িক সমস্যা হয়েছে। একটু পর আবার চেষ্টা করুন।
+        </p>
+      </main>
+    );
   }
+
   const data: IndividualNewsResponse = await res.json();
   const article: ArticleData = await data.data;
   if (!article) {

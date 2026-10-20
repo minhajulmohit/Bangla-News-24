@@ -1,3 +1,4 @@
+import { fetchNewsApi } from "../lib/news-api";
 import NavLinkItem from "./navlinkitem";
 
 type TNavs = {
@@ -9,11 +10,9 @@ type TNavs = {
 };
 
 const NavLinks = async () => {
-  const res = await fetch("https://news-api-v2.vercel.app/api/categories", {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  const allNav = data.data;
+  const res = await fetchNewsApi("/api/categories");
+  const data = res ? await res.json() : null;
+  const allNav: TNavs[] = data?.data ?? [];
   const filterNavs = allNav.filter((n: TNavs) => n.scrapable);
 
   return (

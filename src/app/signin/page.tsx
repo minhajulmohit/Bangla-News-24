@@ -42,14 +42,36 @@ const SignInPage = () => {
   };
 
   const handleGoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
+    const { error } = await authClient.signIn.social({
       provider: "google",
+      callbackURL: "/",
     });
+    if (error) {
+      toast.error(
+        typeof error === "object" &&
+          error !== null &&
+          "message" in error &&
+          typeof error.message === "string"
+          ? error.message
+          : "Google sign-in failed",
+      );
+    }
   };
   const handleGithubSignIn = async () => {
-    const data = await authClient.signIn.social({
+    const { error } = await authClient.signIn.social({
       provider: "github",
+      callbackURL: "/",
     });
+    if (error) {
+      toast.error(
+        typeof error === "object" &&
+          error !== null &&
+          "message" in error &&
+          typeof error.message === "string"
+          ? error.message
+          : "GitHub sign-in failed",
+      );
+    }
   };
 
   return (

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MarqueeText from "react-marquee-text";
+import { fetchNewsApi } from "../lib/news-api";
 import "react-marquee-text/dist/styles.css";
 
 export type THeadline = {
@@ -18,12 +19,12 @@ export type THeadline = {
 };
 
 const Marquee = async () => {
-  const res = await fetch(
-    "https://news-api-v2.vercel.app/api/news?limit=10",
-    { cache: "no-store" },
-  );
+  const res = await fetchNewsApi("/api/news?limit=10");
+  if (!res) return null;
+
   const data = await res.json();
-  const headlines = data.data;
+  const headlines: THeadline[] = data.data ?? [];
+  if (headlines.length === 0) return null;
 
   return (
     <div className="sticky top-0 z-50 my-3 w-full bg-red-600 text-white sm:my-5">

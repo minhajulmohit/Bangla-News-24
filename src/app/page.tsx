@@ -3,6 +3,13 @@ import MostReadNews from "../components/mostreadnews";
 import OtherSectionNews from "../components/othersectionnews";
 import { fetchNewsApi } from "../lib/news-api";
 
+// These BBC Bangla promo/social-media sections should not appear on the home page.
+const HIDDEN_HOME_SECTION_IDS = new Set([
+  "urn:bbc:tipo:list:0ad2eb5d-7a0e-4c74-b8b4-de3de9bc5137", // বিবিসি বাংলা এখন হোয়াটসঅ্যাপে!
+  "urn:bbc:tipo:list:0de6d7f8-ccae-45b6-b843-7329b6e521b7", // বিবিসি বাংলা এখন ইন্সটাগ্রামে!
+  "urn:bbc:tipo:list:61a6be9c-5bb1-4ab5-ad6e-9855ff26a267", // সামাজিক মাধ্যমে বিবিসি বাংলা
+]);
+
 export default async function Home() {
   const [sectionsRes, mostReadRes] = await Promise.all([
     fetchNewsApi("/api/news/sections"),
@@ -26,7 +33,9 @@ export default async function Home() {
 
   const mostRead = mostReadRes ? (await mostReadRes.json()).data : [];
   const mainNews = sections[0].articles;
-  const otherSections = sections.slice(1);
+  const otherSections = sections
+    .slice(1)
+    .filter((section) => !HIDDEN_HOME_SECTION_IDS.has(section.curationId));
 
   return (
     <main className="container mx-auto w-full max-w-screen-2xl px-3 sm:px-4 lg:px-6">

@@ -9,6 +9,15 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  account: {
+    accountLinking: {
+      enabled: true,
+      // Google verifies the email address, so allow linking to an existing
+      // email/password account even when that local email isn't verified.
+      trustedProviders: ["google"],
+      requireLocalEmailVerified: false,
+    },
+  },
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
